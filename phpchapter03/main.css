@@ -1,0 +1,50 @@
+h1, h2, body{
+    font-family: 'Courier New', 'Courier', 'monospace';
+}
+
+img{
+    float: left;
+    margin-right: 1em;
+}
+
+a{
+    font-family: 'Times New Roman', 'Times', 'serif';
+}
+
+link{
+    color: #FF5800;
+}
+
+:hover{
+    color: #B80A9E;
+}
+
+:active{
+    color: #B37A70;
+}
+
+:visited{
+    color: #3347D6;
+}
+
+#my_first_attrib{
+    background-color: #69995d;
+}
+
+.my_p_class{
+    background-color: aqua;
+}
+
+p, h1, body, main{
+    width: 250px;
+    height: 30;
+    margin: 10px;
+    padding: 2px
+}
+
+p, h1, body, main{
+    border-style: dashed;
+    border-width: 6px;
+    border-color: red;
+    border-radius: 10px;
+}

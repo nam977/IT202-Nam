@@ -1,0 +1,87 @@
+/*
+    Author: Lewis M
+    UCID: nam
+    Course Name: IT-202-001
+    Assignment: Unit 3 Assignment
+    Email: nam@njit.edu
+    
+*/
+.main_div::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.right{
+    width: 45%;
+    size: 1000px;
+}
+
+
+.main-greeting-header{
+    text-align: center;
+    font-size: 30px;
+}
+
+html{
+    background-color: #4294C2;
+    font-size: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    padding-bottom: 550px;
+    max-width: 100%;
+    height: auto;
+}
+.paragraph1{
+    text-align: center;
+    position: relative;
+    top: 10px;
+}
+
+.error_message{
+    color: #FA3333;
+    font-weight: bolder;
+    border-style: solid;
+    border-color: #FA3333;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 15px;
+}
+
+.paragraph2{
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+
+.paragraph3{
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.left{
+    width: 55%;
+}
+
+.introduction1{
+    float: left;
+    padding: 10px;
+    height: 500px;
+}
+
+.submission_form{
+    float: left;
+    padding: 50px;
+    height: 350px;
+    top: 100px;
+    position: relative;
+}
+
+label{
+    font-size: 15px;
+}
