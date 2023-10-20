@@ -14,6 +14,7 @@
             height: 55px;
             width: 101.6%;
             margin: -1%;
+            margin-bottom: 20px;
         }
 
         .my_img_logo{

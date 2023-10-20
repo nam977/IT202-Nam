@@ -6,6 +6,7 @@
     Email: nam@njit.edu
     
 */
+
 .main_div::after{
     content: "";
     display: table;
@@ -14,7 +15,7 @@
 
 .right{
     width: 45%;
-    size: 1000px;
+    size: 300px;
 }
 
 
@@ -32,6 +33,7 @@ html{
     max-width: 100%;
     height: auto;
 }
+
 .paragraph1{
     text-align: center;
     position: relative;
@@ -84,4 +86,148 @@ html{
 
 label{
     font-size: 15px;
+}
+
+
+td{
+    padding: 5px;
+    border-style: solid;
+    background-color: white;
+
+}
+
+#main-shoe-paragraph{
+    border: 2px solid navy;
+    padding: 10px;
+}
+
+#category-section{
+    border: 2px solid navy;
+    padding: 20px;
+    background-color: red;
+}
+
+#shoe-header{
+    border: 2px solid navy;
+    padding: 10px;
+}
+
+div.product-info-class{    
+    padding: 100px;
+    font-size: 15px;
+    border-style: solid;
+    width: 960px;
+    margin: 0 auto;
+    height: 450px;
+    background-color: white;
+    float: left;
+}
+
+html{
+    background-color: #799496;
+}
+
+
+#airjordan-div{
+    position: absolute;
+    left: 1000px;
+    top: 450px;
+    border-style: solid;
+    border-color: red;
+} 
+
+
+.shoe-table-data{
+    padding: 20px;
+    margin-top: 1%;
+    background-color: red;
+    float: right;
+    border-style: solid;
+}
+
+#desertSandles-div{
+    position: absolute;
+    left: 1600px;
+    top: 450px;
+    border-style: solid;
+    border-color: blue;
+}
+
+#jordan-shoe-fig{
+    position: absolute;
+    top: 870px;
+    left: 1025px;
+}
+
+#yeezys-shoe-fig{
+    position: absolute;
+    bottom: -30px;
+    left: 25px;
+}
+
+
+#shoe-text-catalog{
+    position: absolute;
+    left: 1000px;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    resize: none;
+}
+
+#tactical-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 1020px;
+}
+
+#uggs-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 1310px;
+}
+
+#loafers-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 1610px;
+}
+
+#desert-shoe-fig{
+    position: absolute;
+    left: 1630px;
+    top: 870px;
+}
+
+#tacticalBoots-div{
+    position: absolute;
+    
+    left: 1000px;
+    top: 100px;
+    
+    border-style: solid;
+    border-color: green;
+}
+
+#luxuryUggs-div{
+    position: absolute;
+    left: 1300px;
+    top: 100px;
+    border-style: solid;
+    border-color: pink;
+}
+
+#gucci-loafers-div{
+    position: absolute;
+    left: 1600px;
+    top: 100px;
+    border-color: purple;
+    border-style: solid;
+}
+
+#yellow-yeazy-div{
+    position: absolute;
+    left: 1300px;
+    top: 450px;
+    border-color: yellow;
+    border-style: solid;
 }
