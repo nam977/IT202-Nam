@@ -1,6 +1,13 @@
 
+
 <!--
     Below is the main code that retrieves all of the data from the nam shoe-store database
+    
+    Author: Lewis M
+    UCID: nam
+    Course Name: IT-202-001
+    Assignment: Unit 3 Assignment
+    Email: nam@njit.edu
 -->
 <?php 
     require('shoe_database.php');
