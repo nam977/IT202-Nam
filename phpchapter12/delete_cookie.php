@@ -1,10 +1,10 @@
 <?php
-$cookie_name = "userid";
+    // set the expiration date to one hour ago
+    $cookie_name = "userid";
+    $one_hour_in_seconds = 60 ** 2;
 
-// set the expiration date to one hour ago
-$one_hour_in_seconds = 60 * 60;
+    setcookie("userid", "", time() - $one_hour_in_seconds, "/");
 
-setcookie($cookie_name, "", time() - $one_hour_in_seconds, "/");
-
-echo "Cookie named $cookie_name is deleted.";
+    echo "Cookie named $cookie_name is deleted.";
 ?>
+

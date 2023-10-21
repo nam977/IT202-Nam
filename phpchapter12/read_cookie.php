@@ -1,15 +1,13 @@
 <?php
-$cookie_name = "userid";
+    $cookie_name = "userid";
 
-// Retrieve the value from $_COOKIE superglobal array
+    //RETRIEVE from $_COOKIE superglobal array
+    $cookie_value = filter_input(INPUT_COOKIE, $cookie_name, FILTER_VALIDATE_INT);
 
-$value = filter_input(INPUT_COOKIE, $cookie_name, FILTER_VALIDATE_INT);
-
-if(!isset($value)){
-    echo "Cookie named $cookie_name is not set!";
-}else{
-    echo "Cookie named $cookie_name is set!";
-    echo "<br>";
-    echo "filter_input value is: $value";
-}
+    if(!isset($cookie_value)){
+        echo "Cookie name $cookie_name is not set!";
+    }else{
+        echo "Cookie named $cookie_name is set!<br>";
+        echo "Cookie value is $cookie_value";
+    }
 ?>
