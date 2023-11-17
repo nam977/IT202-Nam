@@ -1,0 +1,27 @@
+div.shoe_form_input_main{
+    padding: 3%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    border-style: solid;
+    border-color: red;
+    width: 40%;
+    float: left;
+    resize: both;
+    overflow: auto;
+}
+
+
+.shoe_code_class_label{
+    margin: 10px;
+    font-size: 24px;
+}
+
+body{
+    height: 105%;
+    min-height: 115vh;
+}
+
+td{
+    padding: 13px;
+    border-style: solid;
+}

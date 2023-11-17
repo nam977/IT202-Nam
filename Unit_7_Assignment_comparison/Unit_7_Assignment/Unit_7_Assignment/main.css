@@ -1,0 +1,232 @@
+/*
+    Author: Lewis M
+    UCID: nam
+    Course Name: IT-202-001
+    Assignment: Unit 3 Assignment
+    Email: nam@njit.edu
+    
+*/
+
+.main_div::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.right{
+    width: 45%;
+    size: 300px;
+}
+
+
+.main-greeting-header{
+    text-align: center;
+    font-size: 30px;
+}
+
+html{
+    background-color: #4294C2;
+    font-size: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    padding-bottom: 550px;
+    max-width: 100%;
+    height: auto;
+}
+
+.paragraph1{
+    text-align: center;
+    position: relative;
+    top: 10px;
+}
+
+.error_message{
+    color: #FA3333;
+    font-weight: bolder;
+    border-style: solid;
+    border-color: #FA3333;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 15px;
+}
+
+.paragraph2{
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+
+.paragraph3{
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.left{
+    width: 55%;
+}
+
+.introduction1{
+    float: left;
+    padding: 10px;
+    height: 500px;
+}
+
+.submission_form{
+    float: left;
+    padding: 50px;
+    height: 350px;
+    top: 100px;
+    position: relative;
+}
+
+label{
+    font-size: 15px;
+}
+
+
+td{
+    padding: 5px;
+    border-style: solid;
+    background-color: white;
+
+}
+
+#main-shoe-paragraph{
+    border: 2px solid navy;
+    padding: 10px;
+}
+
+#category-section{
+    border: 2px solid navy;
+    padding: 20px;
+    background-color: red;
+}
+
+#shoe-header{
+    border: 2px solid navy;
+    padding: 10px;
+}
+
+div.product-info-class{    
+    padding: 100px;
+    font-size: 15px;
+    border-style: solid;
+    width: 730px;
+    margin: 0 auto;
+    height: 500px;
+    background-color: white;
+    float: left;
+}
+
+html{
+    background-color: #799496;
+}
+
+
+#airjordan-div{
+    position: absolute;
+    left: 760px;
+    top: 450px;
+    border-style: solid;
+    border-color: red;
+} 
+
+
+.shoe-table-data{
+    padding: 20px;
+    margin-top: 1%;
+    background-color: red;
+    float: right;
+    border-style: solid;
+}
+
+#desertSandles-div{
+    position: absolute;
+    left: 1185px;
+    top: 450px;
+    border-style: solid;
+    border-color: blue;
+}
+
+#jordan-shoe-fig{
+    position: absolute;
+    top: 870px;
+    left: 760px;
+}
+
+#yeezys-shoe-fig{
+    position: absolute;
+    top: 870px;
+    left: 975px;
+}
+
+
+#shoe-text-catalog{
+    position: absolute;
+    left: 1000px;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    resize: none;
+}
+
+#tactical-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 750px;
+}
+
+#uggs-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 975px;
+}
+
+#loafers-shoe-fig{
+    top: 380px;
+    position: absolute;
+    left: 1185px;
+}
+
+#desert-shoe-fig{
+    position: absolute;
+    left: 1185px;
+    top: 870px;
+}
+
+#tacticalBoots-div{
+    position: absolute;
+    left: 760px;
+    top: 100px;
+    border-style: solid;
+    border-color: green;
+}
+
+#luxuryUggs-div{
+    position: absolute;
+    left: 975px;
+    top: 100px;
+    border-style: solid;
+    border-color: pink;
+}
+
+#gucci-loafers-div{
+    position: absolute;
+    left: 1185px;
+    top: 100px;
+    border-color: purple;
+    border-style: solid;
+}
+
+#yellow-yeazy-div{
+    position: absolute;
+    left: 975px;
+    top: 450px;
+    border-color: yellow;
+    border-style: solid;
+}
