@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <!-- Slide 44 -->
+    <form action="process.php" method="get">
+      <label>Age:</label>
+      <input type="text" name="age" id="age">
+      <input type="submit" id="submit_button">
+    </form>
+    <script>
+      const checkAge = evt => {
+        const age_element = document.querySelector("#age");
+        const age = parseInt(age_element.value);
+        if(isNaN(age) || age < 0) {
+          // notify user of error
+          alert("Age is invalid.");
+          // do not allow form to be submitted
+          evt.preventDefault();
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("#submit_button").addEventListener("click", checkAge);
+      });
+    </script>
+  </body>
+</html>
