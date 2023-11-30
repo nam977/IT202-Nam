@@ -206,7 +206,7 @@
             text-align: left;
             padding: 30px;
         }
-
+z
         .user_info{
             margin-left: 5%;
         }

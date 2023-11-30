@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    
 
     //echo $_SESSION['is_valid_user'];
 
@@ -47,6 +48,26 @@
 
 <html>
 <head>
+    <script>
+
+        function confirmDeletion(){
+            var confirmDeletion = confirm("Are you sure you want to delete this entry");
+
+            if(confirmDeletion){
+                confirmDeletion();
+            }
+        }
+
+        function performDeletion(){
+            $.ajax({
+                type: "POST",
+                url: 'delete_product.php',
+                success: function(data) {
+                    $('#Delete').html(data);
+                }
+            });
+        }
+    </script>
     <title> My Shoe Store </title>
     <style>
 
@@ -129,21 +150,19 @@
                     <th> Shoe Name: </th>
                     <th> Price: </th>
                     <th> Description: </th>
-                    <th> Shoe Price: </th>
                 </tr>
 
                 <?php foreach ($shoeProducts as $shoeProduct) : ?>
                 <tr>
-                    <td> <?php echo $shoeProduct['shoeCode']; ?> </td>
+                    <td> <a href = "shoe_details.php?shoe_code=<?php echo $shoeProduct['shoeCode'];?>" ?> <?php echo $shoeProduct['shoeCode'];?> </a> </td> 
                     <td> <?php echo $shoeProduct['shoeName']; ?> </td>
                     <td> <?php echo $shoeProduct['price']; ?> </td>
                     <td> <?php echo $shoeProduct['description']; ?> </td>
-                    <td> <?php echo $shoeProduct['price']; ?> </td>
                 </tr>
                 <?php endforeach; ?>
             </table>
             
-            <form action = 'delete_product.php' method = 'post'>
+            <form onsubmit = "return confirmDeletion()" id = "Delete" name = "Delete" action = 'delete_product.php' method = 'post'>
                 <label class = "shoe_code_class_label"> Shoe Code: </label> <br>
                 <input class = "shoe_code_class_label" type = "text" id = "shoe_code" name = "delete_shoe_code"> <br> 
                 <input class = "shoe_code_class_label" type = "submit" value = "Delete">

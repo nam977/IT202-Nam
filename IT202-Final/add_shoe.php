@@ -30,6 +30,8 @@ $shoe_query_check1 = "SELECT *
 
 /*exectues SQL Query statement with variable shoe_id 
   containing the value shoe_id from SQL Database*/
+
+  
 $statement1 = $db->prepare($shoe_query_check1); // Loads SQL Query Statement
 $statement1->execute(['shoe_id' => $shoe_id]); 
 

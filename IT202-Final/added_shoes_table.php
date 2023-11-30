@@ -28,8 +28,6 @@ $gen_id = rand(0, getrandmax());
 
 <html>
 <head>
-    <style>
-    </style>
     <title> My Shoe Store </title>
     <link rel = "stylesheet" href = "custom_table_main.css">
 </head>
@@ -41,13 +39,13 @@ $gen_id = rand(0, getrandmax());
         <?php include("logged_in_header.php"); ?>
     </div>
     <div class = "main-section">
-        <h1 class = "user_info"> <?php echo getFullName(); ?> </h1>
+        <h2 class = "user_info"> <?php echo getFullName(); ?> </h2>
 
-        <h1>
+        <h2>
             <p> You have Successfully Logged In!</p>            
-        </h1>
+        </h2>
         <br>
-        <h1>
+        <h2>
             <p>
                 Welcome to our shoe Catalog. 
                 Feel free to add any shoe of 
@@ -56,7 +54,7 @@ $gen_id = rand(0, getrandmax());
             </p>
 
             <br>
-        </h1>
+        </h2>
         <!--
             Main User Input Section
         -->
@@ -78,7 +76,7 @@ $gen_id = rand(0, getrandmax());
 
             <h1> Shoe Category Selection Menu: </h1>
 
-            <form class = "form_input_box" action = "add_shoe.php" method = "post">            
+            <form id = "mainForm" name = "mainForm" class = "form_input_box" action = "add_shoe.php" method = "post">            
                 <label class = "shoe_code_class_label"> Shoe Code: </label> <br>
                 <input class = "shoe_code_class_label" type = "text" id = "shoe_code" name = "shoe_code"> <br> 
             
@@ -119,7 +117,65 @@ $gen_id = rand(0, getrandmax());
                 <br>
 
                 <label> &nbsp; </label>
-                <input class = "shoe_code_class_label" type = "submit" value = "Add Shoe"> <!-- submit_buttom -->
+                <input onclick = "Javascript:test()" class = "shoe_code_class_label" type = "submit" value = "Add Shoe"> <!-- submit_buttom -->
+
+                <input id = "shoe_reset_button"class = "shoe_code_class_label" type = "submit" value = "Reset Form"> <!-- submit_buttom -->
+
+
+                <script type = "text/javascript">
+                    function test(){
+                        var error_messages = "";
+                        var shoeCodeValue = document.getElementById("shoe_code").value;
+                        var shoeNameValue = document.getElementById("shoe_name").value;
+                        var shoeNameDescription = document.getElementById("description_text_area").value;
+                        var shoeNamePrice = document.getElementById("shoe_price").value;
+                        var shoePriceValue = parseFloat(shoeNamePrice);
+                        
+                        if(shoeCodeValue == ""){
+                            error_messages += "Invalid Input. \nShoe code cannot be empty\n";
+
+                        }else if((shoeCodeValue.length > 1 && shoeCodeValue.length) < 4 || shoeCodeValue.length > 10){
+                            error_messages += "Invalid Input. \nShoe code must be between 4 and 10 characters\n";
+                        }
+
+                        if(shoeNameValue == ""){
+                            error_messages += "\nShoe name cannot be empty\n";
+                        }else if(shoeNameValue.length < 10 || shoeNameValue.length > 100){
+                            error_messages += "\nShoe name must be between 10 to 100 characters\n";
+                        }
+
+                        if(shoeNameDescription == ""){
+                            error_messages += "\nShoe Description cannot be empty\n";
+                        }else if(shoeNameDescription.length < 10 || shoeNameDescription.length > 255){
+                            error_messages += "\nShoe Description must be a minimum of 10 characters & a maximum of 255 characters\n";
+                        }
+
+                        if(shoeNamePrice == ""){
+                            error_messages += "\nShoe Price cannot be empty\n";
+                        }else if(shoePriceValue <= 0){
+                            error_messages += "\nShoe Price cannot be less or equal to $0\n";
+                        }else if(shoePriceValue > 100000){
+                            error_messages += "\nShoe Price cannot exceed $100000\n";
+
+                        }
+
+                        if(error_messages != ""){
+                            window.alert(error_messages);
+                            return false;
+                        }
+                        return true;
+                    }
+
+                    const resetFunction = evt => { // Event object
+                        var resetForm = document.getElementById("mainForm")[0];
+                        resetForm.reset();
+                        return false;
+                    };
+                    
+                    document.addEventListener("DOMContentLoaded", () => {
+                        select("#shoe_reset_button").addEventListener("click", resetFunction);
+                    });     
+                </script>
             </form>
         </div>
     </div>     

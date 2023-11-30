@@ -12,7 +12,7 @@
     <style>
         footer{
             position: fixed; 
-            top: 89.5%; 
+            top: 90.5%; 
             left: 0; 
             right: 0; 
             bottom: 0;
