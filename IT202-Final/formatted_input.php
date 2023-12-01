@@ -57,45 +57,57 @@
     // Validates $state_input value
     if($state_input == ''){
         $error_message .= 'Invalid Input, State  cannot be empty.<br>';
+        $state_input = "CO";
     }else if(strlen($state_input) != 2){
         $error_message .= 'Invaid Input, State must consist of Two Letters Only.<br>'; // checks if $state_input consists of only 2 letters
+        $state_input = "CO";
     }else if(ctype_alpha($state_input) === False){
         $error_message .= 'Invalid Input, State must consist of Letters Only.<br>'; // checks if $state_input consists of only letters
+        $state_input = "CO";
     }
 
     // validates an order Number
-    if($order_number_input == ''){
-        $error_message .= 'Invalid Input, Order Number cannot be empty.<br>';
+    if(!is_int($order_number_input)){
+        $error_message .= 'Invalid Input, Order Number must be a number.<br>';
+        $order_number_input = 10;
     }else if($order_number_input < 0){ // checks if $error_message is less than 0
-        $error_message .= "Invalid Input, Order number cannot be less than 0"; 
+        $error_message .= "Invalid Input, Order number cannot be less than 0<br>"; 
+        $order_number_input = 10;
     }
 
     // validates $zip_code_input    
-    if($zip_code_input === False){
+    if($zip_code_input === ''){
         $error_message .= 'Invalid Input, Zip Code Cannot be empty.<br>';
+        $zip_code_input = '05768';
     }
     else if(strlen($zip_code_input_str) != 5){
         $error_message .= 'Invalid Input, Zip Code Must have 5 Digits.<br>'; // checks if zip code has a length of 5
+        $zip_code_input = '05768';
     }
 
     // Validates $price_input
     if($price_input === False){
         $error_message .= 'Invalid Input, Price must be a valid number.<br>';
+        $price_input = 45;
     }else if($price_input <= 0){ // checks if $price_input is less than or equal to 0
         $error_message .= 'Invalid Input, Price cannot be less than or equal to zero.<br>';
+        $price_input = 45;
     }else if($price_input > 150){ // prevents $price_input from exceeding $150
         $error_message .= 'Invalid Input, Price cannot exceed $150.<br>';
+        $price_input = 45;
     }
 
     // appends an error message if $city_input is empty
     if($city_input == ''){
         $error_message .= 'Invalid Input, City Cannot be Blank.<br>';
+        $city_input = 'Denver';
     }
     
     // appends an error message if $street_address_input is empty
 
     if($street_address_input == ''){
         $error_message .= 'Invalid Input, Street Address Cannot be Blank.<br>';
+        $street_address_input = '129 Kearny Road';
     }
 
     /*
@@ -106,34 +118,45 @@
     */
     if($box_dimension_height === FALSE){
         $error_message .= 'Invalid Input, Box Height must be a valid Number.<br>';
+        $box_dimension_height = 10;
     }else if($box_dimension_height > 36){
         $error_message .= 'Invalid input, Box Height cannot exceed 36 Inches.<br>';
+        $box_dimension_height = 10;
     }else if($box_dimension_height < 3){
         $error_message .= 'Invalid input, Box Height cannot be less than 3 Inches.<br>';
+        $box_dimension_height = 10;
     }
 
     if($box_dimension_width === FALSE){
         $error_message .= 'Invalid Input, Box Width must be a valid Number.<br>';
+        $box_dimension_width = 5;
     }else if($box_dimension_width > 36){
         $error_message .= 'Invalid input, Box Width cannot exceed 36 Inches.<br>';
+        $box_dimension_width = 5;
     }else if($box_dimension_width < 3){
         $error_message .= 'Invalid input, Box Width cannot be less than 3 Inches.<br>';
+        $box_dimension_width = 5;
     }
 
     if($box_dimension_length === FALSE){
         $error_message .= 'Invalid Input, Box Length must be a valid Number.<br>';
+        $box_dimension_length = 15;
     }else if($box_dimension_length > 36){
         $error_message .= 'Invalid input, Box Length cannot exceed 36 Inches.<br>';
+        $box_dimension_length = 15;
     }else if($box_dimension_length < 3){
         $error_message .= 'Invalid input, Box Length cannot be less than 3 Inches.<br>';
+        $box_dimension_length = 15;
     }
 
     if($first_name_input == ''){
         $error_message .= 'Invalid Input, First Name Cannot be Blank.<br>';
+        $first_name_input = 'John';
     }
 
     if($last_name_input == ''){
         $error_message .= 'Invalid Input, Last Name Cannot be Blank.<br>';
+        $last_name_input = 'Doe';
     }
 
     $box_dimensions_f = 'Box Dimensions: ' . $box_dimension_length . " in. x " . $box_dimension_width . " in. x " . $box_dimension_height . ' in.';
@@ -146,6 +169,10 @@
     $order_number_f = 'Order Number: ' . $order_number_input;
     $tracking_number = 'Tracking #: DS-9341'; // Fake tracking number
     $shipping_class = "Shipping Class: Priority Mail";
+
+    if($error_message != ""){
+        $error_message .= "\nUsing Default options due to multiple Input Errors";
+    }
 ?>
 
 
@@ -228,8 +255,7 @@ z
                 
                 <div class = "main-info">
                     <h1 class = "user_info"> <?php echo getFullName(); ?> </h1>
-
-                    <h1> Shoe Store Shipping Info: </h1>
+                    <h1> My Shoe Store Customer Shipping Info: </h1>
 
                     <div class = "top-info">
                         <span> <?php echo $order_number_f;?> </span> <br>
