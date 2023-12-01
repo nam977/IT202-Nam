@@ -30,6 +30,18 @@ $gen_id = rand(0, getrandmax());
 <head>
     <title> My Shoe Store </title>
     <link rel = "stylesheet" href = "custom_table_main.css">
+
+    <script>
+        const resetFunction = evt => { // Event object
+            var resetForm = document.getElementById("mainForm")[0]; 
+            resetForm.reset(); // resets entire form
+            return true;
+        };
+                    
+        document.addEventListener("DOMContentLoaded", () => {
+            select("#shoe_reset_button").addEventListener("click", resetFunction); // attaches eventListenr to shoe reset button
+        });  
+    </script>
 </head>
 
 <body>
@@ -122,7 +134,7 @@ $gen_id = rand(0, getrandmax());
                 <label> &nbsp; </label>
                 <input class = "shoe_code_class_label" type = "submit" value = "Add Shoe"> <!-- submit_buttom -->
                 
-                <input id = "shoe_reset_button" class = "shoe_code_class_label" type = "submit" value = "Reset Form"> <!-- submit_buttom -->
+                <input id = "shoe_reset_button" class = "shoe_code_class_label" type = "reset" value = "Reset Form"> <!-- submit_buttom -->
             </form>
 
 
