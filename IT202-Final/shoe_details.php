@@ -54,6 +54,9 @@ $image = glob("images" . "$shoe_code.jpg");
             margin: 5% 5%;
         }
         
+        body{
+            background-color: #2E6171;
+        }
 
     </style>
     <head>
