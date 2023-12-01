@@ -29,7 +29,7 @@ $image = glob("images" . "$shoe_code.jpg");
             width: 580px;
             text-align: center;
             padding: 40px;
-            margin: 5% 1.5%;
+            margin: 2% 0%;
             position: fixed;
         }
 
@@ -100,9 +100,9 @@ $image = glob("images" . "$shoe_code.jpg");
             <?php 
                 $file_location = file_exists("images/$shoe_code-bw.jpg");
                 if($file_location == 1){
-                    echo "<img src = \"images/$shoe_code-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"400px\" width = \"550px\"/>";
+                    echo "<img src = \"images/$shoe_code-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"300px\" width = \"450px\"/>";
                 }else{
-                    echo "<img src = \"images/default-shoe-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"400px\" width = \"550px\"/>";
+                    echo "<img src = \"images/default-shoe-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"300px\" width = \"450px\"/>";
                 }
             ?>
         </div>

@@ -67,10 +67,10 @@
     }
 
     // validates an order Number
-    if(!is_int($order_number_input)){
+    if(!is_numeric($order_number_input)){
         $error_message .= 'Invalid Input, Order Number must be a number.<br>';
         $order_number_input = 10;
-    }else if($order_number_input < 0){ // checks if $error_message is less than 0
+    }else if(intval($order_number_input) < 0){ // checks if $error_message is less than 0
         $error_message .= "Invalid Input, Order number cannot be less than 0<br>"; 
         $order_number_input = 10;
     }

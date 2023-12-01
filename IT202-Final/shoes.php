@@ -1,5 +1,12 @@
 <?php 
-    require('database.php');
+    //echo $_SESSION['is_valid_user'];
+    /*
+    if($test == 1){
+        $_SESSION['refreshConfirmValue'] = 0;
+        echo("<meta http-equiv='refresh' content='1'>");
+    }*/
+
+    require('admin_db.php');
     // Retrieves shoeCategoryID
     $shoe_category_id = filter_input(INPUT_GET, 'shoe_category_id', FILTER_VALIDATE_INT);
 
@@ -41,6 +48,17 @@
 <html>
 <head>
     <title> My Shoe Store </title>
+    <style>
+
+        .shoe_code_class_label{
+            font-size: 30px;
+            margin: 10px;
+        }
+        
+        .user_info{
+            margin-left: 0 -30%;
+        }
+    </style>
     <link rel = "stylesheet" href = "main.css">
 </head>
 
@@ -53,19 +71,21 @@
     <div class = "product-info-class">
 
         <div id = "main-shoe-paragraph">
-        <p> Welcome to our catalog! </p>
+            <p class = "user_info"> <!--?php echo getFullName(); ?--> </p>
+
+            <p> This is our catalog! </p>
+                
+            <p> Feel free to browse through our amazing catalog of shoes. </p>
             
-        <p> Feel free to browse through our amazing catalog of shoes. </p>
-        
-        <p> Our catalog contains discount codes for a selected variety of designer shoes. </p> 
+            <p> Our catalog contains discount codes for a selected variety of designer shoes. </p> 
+                
+            <p> We offer shoes for a wide variety of professions. </p>
             
-        <p> We offer shoes for a wide variety of professions. </p>
-        
-        <p> 
-            This includes, but is not limited to: Athlethics, 
-            Military, Modeling, Luxury Design, Office/White   
-            Collar Services, & Desert Oil Drilling 
-        </p>
+            <p> 
+                This includes, but is not limited to: Athlethics, 
+                Military, Modeling, Luxury Design, Office/White   
+                Collar Services, & Desert Oil Drilling 
+            </p>
         </div>
     
 
@@ -109,19 +129,28 @@
                     <th> Shoe Name: </th>
                     <th> Price: </th>
                     <th> Description: </th>
-                    <th> Shoe Price: </th>
                 </tr>
 
                 <?php foreach ($shoeProducts as $shoeProduct) : ?>
                 <tr>
-                    <td> <?php echo $shoeProduct['shoeCode']; ?> </td>
+                    <td> <a href = "shoe_details.php?shoe_code=<?php echo $shoeProduct['shoeCode'];?>" ?> <?php echo $shoeProduct['shoeCode'];?> </a> </td> 
                     <td> <?php echo $shoeProduct['shoeName']; ?> </td>
                     <td> <?php echo $shoeProduct['price']; ?> </td>
                     <td> <?php echo $shoeProduct['description']; ?> </td>
-                    <td> <?php echo $shoeProduct['price']; ?> </td>
                 </tr>
                 <?php endforeach; ?>
             </table>
+            <!--
+                 executves confirmDeletion on submit. 
+                 When on the original page, after delete has been executed, page must be manually refreshed
+            -->
+
+            <!--onsubmit = "return confirmDeletion()" -->
+            <form id = "Delete" name = "Delete" action = 'delete_product.php' method = 'post'> 
+                <label class = "shoe_code_class_label"> Shoe Code: </label> <br>
+                <input class = "shoe_code_class_label" type = "text" id = "shoe_code" name = "delete_shoe_code"> <br> 
+                <input class = "shoe_code_class_label" type = "submit" value = "Delete">
+            </form>
         </section>
     </div>
     
@@ -133,14 +162,14 @@
 
     </figure>
 
-    <figure>
+    <!--figure>
     <div id = "desertSandles-div">
         <img src = "images/desert-sandles.jpg" width = "190px" height = "400px" alt = "desertSandles">
     </div>
 
     <figcaption id = "desert-shoe-fig"> Help yourself to a pair of lovely sandles while <br>you drill for oil in the desert</figcaption>
 
-    </figure>
+    </figure-->
 
     <figure>
     <div id = "tacticalBoots-div">
@@ -159,13 +188,13 @@
     <figcaption id = "uggs-shoe-fig"> Embrace Fall & Winter with our comfy tailor <br>made uggs </figcaption>
     </figure>
     
-    <figure>
-    <div id = "gucci-loafers-div">
+    <!--figure-->
+    <!--div id = "gucci-loafers-div">
         <img src ="images/gucci-loafers.jpg" width = "190px" height = "265px" alt = "gucci">
-    </div>
-    <figcaption id = "loafers-shoe-fig"> Feel like a Diva with our extravagant gucci made <br> loafers</figcaption>
+    </div-->
+    <!--figcaption id = "loafers-shoe-fig"> Feel like a Diva with our extravagant gucci made <br> loafers</figcaption-->
 
-    </figure>
+    <!--/figure-->
     
     <figure>
     <div id = "yellow-yeazy-div">
