@@ -1,12 +1,22 @@
 <?php 
-    session_start();
-    
-
     //echo $_SESSION['is_valid_user'];
+    if(!session_id()){
+        session_start();
+        $_SESSION['refreshConfirmValue'] = 0;
+    }
+
+    
+    $test = $_SESSION['refreshConfirmValue'];
+    /*
+    if($test == 1){
+        $_SESSION['refreshConfirmValue'] = 0;
+        echo("<meta http-equiv='refresh' content='1'>");
+    }*/
 
     if($_SESSION['is_valid_user'] == 0){
         header("location:login.php");
     }
+
     require('admin_db.php');
     // Retrieves shoeCategoryID
     $shoe_category_id = filter_input(INPUT_GET, 'shoe_category_id', FILTER_VALIDATE_INT);
@@ -49,21 +59,24 @@
 <html>
 <head>
     <script>
-
+        // asks user to confirm deletion
         function confirmDeletion(){
             var confirmDeletion = confirm("Are you sure you want to delete this entry");
 
             if(confirmDeletion){
                 confirmDeletion();
+                return true; // if yes, returns true
             }
+            return false; // if no, returns false
         }
 
-        function performDeletion(){
+        function performDeletion(){ // function deletes SQL Table Entry
             $.ajax({
                 type: "POST",
                 url: 'delete_product.php',
                 success: function(data) {
-                    $('#Delete').html(data);
+                    $('#Delete').html(data); // attaches & executes delete_product.php to #Delete html tag
+                    window.location.reload(); // attempts to reload page.
                 }
             });
         }
@@ -92,21 +105,21 @@
     <div class = "product-info-class">
 
         <div id = "main-shoe-paragraph">
-        <p class = "user_info"> <?php echo getFullName(); ?> </p>
+            <p class = "user_info"> <?php echo getFullName(); ?> </p>
 
-        <p> This is our catalog! </p>
+            <p> This is our catalog! </p>
+                
+            <p> Feel free to browse through our amazing catalog of shoes. </p>
             
-        <p> Feel free to browse through our amazing catalog of shoes. </p>
-        
-        <p> Our catalog contains discount codes for a selected variety of designer shoes. </p> 
+            <p> Our catalog contains discount codes for a selected variety of designer shoes. </p> 
+                
+            <p> We offer shoes for a wide variety of professions. </p>
             
-        <p> We offer shoes for a wide variety of professions. </p>
-        
-        <p> 
-            This includes, but is not limited to: Athlethics, 
-            Military, Modeling, Luxury Design, Office/White   
-            Collar Services, & Desert Oil Drilling 
-        </p>
+            <p> 
+                This includes, but is not limited to: Athlethics, 
+                Military, Modeling, Luxury Design, Office/White   
+                Collar Services, & Desert Oil Drilling 
+            </p>
         </div>
     
 
@@ -161,8 +174,11 @@
                 </tr>
                 <?php endforeach; ?>
             </table>
-            
-            <form onsubmit = "return confirmDeletion()" id = "Delete" name = "Delete" action = 'delete_product.php' method = 'post'>
+            <!--
+                 executves confirmDeletion on submit. 
+                 When on the original page, after delete has been executed, page must be manually refreshed
+            -->
+            <form onsubmit = "return confirmDeletion()" id = "Delete" name = "Delete" action = 'delete_product.php' method = 'post'> 
                 <label class = "shoe_code_class_label"> Shoe Code: </label> <br>
                 <input class = "shoe_code_class_label" type = "text" id = "shoe_code" name = "delete_shoe_code"> <br> 
                 <input class = "shoe_code_class_label" type = "submit" value = "Delete">
@@ -178,14 +194,14 @@
 
     </figure>
 
-    <figure>
+    <!--figure>
     <div id = "desertSandles-div">
         <img src = "images/desert-sandles.jpg" width = "190px" height = "400px" alt = "desertSandles">
     </div>
 
     <figcaption id = "desert-shoe-fig"> Help yourself to a pair of lovely sandles while <br>you drill for oil in the desert</figcaption>
 
-    </figure>
+    </figure-->
 
     <figure>
     <div id = "tacticalBoots-div">
@@ -204,13 +220,13 @@
     <figcaption id = "uggs-shoe-fig"> Embrace Fall & Winter with our comfy tailor <br>made uggs </figcaption>
     </figure>
     
-    <figure>
-    <div id = "gucci-loafers-div">
+    <!--figure-->
+    <!--div id = "gucci-loafers-div">
         <img src ="images/gucci-loafers.jpg" width = "190px" height = "265px" alt = "gucci">
-    </div>
-    <figcaption id = "loafers-shoe-fig"> Feel like a Diva with our extravagant gucci made <br> loafers</figcaption>
+    </div-->
+    <!--figcaption id = "loafers-shoe-fig"> Feel like a Diva with our extravagant gucci made <br> loafers</figcaption-->
 
-    </figure>
+    <!--/figure-->
     
     <figure>
     <div id = "yellow-yeazy-div">
@@ -225,4 +241,24 @@
     </div>
     </main>
 </body>
+<script>
+    function confirmDeletion(){ // 
+        var confirmDeletion = confirm("Are you sure you want to delete this entry");
+        
+        if(confirmDeletion){ // if yes, deletes entry
+            confirmDeletion();   
+        }
+    }
+    
+    function performDeletion(){ // function deletes SQL Table Entry
+        $.ajax({
+            type: "POST",
+            url: 'delete_product.php',
+            success: function(data) {
+                $('#Delete').html(data); // attaches & executes delete_product.php to #Delete html tag
+                window.location.reload(); // attempts to reload page.
+            }
+        });
+    }
+</script>
 </html>

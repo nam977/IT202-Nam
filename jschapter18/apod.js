@@ -1,3 +1,5 @@
+"use strict";
+
 const clearDisplay = () => {
     const display = document.querySelector("#display");
 
@@ -14,7 +16,7 @@ const displayError = error => {
     const text = document.createTextNode(error);
     span.appendChild(text);
     display.appendChild(span);
-}
+};
 
 // TESTING ONLY
 // displayError('error 1');
@@ -22,14 +24,55 @@ const displayError = error => {
 
 const displayData = data => {
     clearDisplay();
-    console.log(data);
     // TODO display APOD data
-    clearDisplay();
+
     const display = document.querySelector("#display");
     const h3 = document.createElement('h3');
     const title = document.createTextNode(data.title);
     h3.appendChild(title);
     display.appendChild(h3);
+
+    switch(data.media_type){
+        case "image":
+            const img = document.createElement('img');
+            img.setAttribute('src', data.url);
+            img.setAttribute('width', 640);
+            img.setAttribute('alt', 'NASA photo');
+            display.appendChild(img);
+            break;
+        case "video":
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', data.url);
+            iframe.setAttribute('width', 640);
+            iframe.setAttribute('height', 360);
+            iframe.setAttribute('frameborder', 0); 
+            iframe.setAttribute('allowfullscreen', true);
+            display.appendChild(iframe);
+            break;
+        default:
+            const none = document.createElement('img');
+            none.setAttribute('width', 640);
+            none.setAttribute('alt', 'NASA Photo');
+            display.appendChild(none);
+    }
+
+    const div = document.createElement('div');
+    const date = document.createTextNode(data.date);
+    div.appendChild(date);
+
+    if(data.copyright){
+        const span = document.createElement('span');
+        span.setAttribute('class', 'right');
+        const text = document.createTextNode("Copyright" + data.copyright);
+        span.appendChild(text);
+        div.appendChild(span);
+    }
+    display.appendChild(div);
+
+    const p = document.createElement('p');
+    const explanation = document.createTextNode(data.explanation);
+    p.appendChild(explanation);
+    display.append(p);
 }
 
 const displayPicture = data => {
@@ -43,8 +86,7 @@ const displayPicture = data => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#view_button").addEventListener
-    ("click", () => {
+    document.querySelector("#view_button").addEventListener("click", () => {
 
         const dateTextbox = document.querySelector("#date");
         let dateStr  = dateTextbox.value;

@@ -48,8 +48,12 @@ $image = glob("images" . "$shoe_code.jpg");
             float: right;
             margin: 0% 53%;
             position: fixed;
-
         }
+
+        #mouse_change_id{
+            margin: 5% 5%;
+        }
+        
 
     </style>
     <head>
@@ -94,7 +98,12 @@ $image = glob("images" . "$shoe_code.jpg");
 
         <div id = "image_placement">
             <?php 
-                echo "<img src = \"images/\" + shoe_code.get(\"shoe_code\") + \"-bw.jpg id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"500px\" width = \"650px\"/>"
+                $file_location = file_exists("images/$shoe_code-bw.jpg");
+                if($file_location == 1){
+                    echo "<img src = \"images/$shoe_code-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"400px\" width = \"550px\"/>";
+                }else{
+                    echo "<img src = \"images/default-shoe-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"400px\" width = \"550px\"/>";
+                }
             ?>
         </div>
         <div class = "footer">
@@ -112,13 +121,28 @@ $image = glob("images" . "$shoe_code.jpg");
         item.addEventListener("mouseover", showImage, false);
         item.addEventListener("mouseout", hideImage, false);
         
+        function checkFileExists(url){
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', url, false);
+            xhr.send();
+            return xhr.status !== 404;
+        }
+
         function showImage(){
-            item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + ".jpg");
+            if(checkFileExists("images/" + shoe_code.get("shoe_code") + ".jpg")){
+                item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + ".jpg");
+            }else{
+                item.setAttribute("src", "images/default-shoe.jpg");
+            }
         }
 
         function hideImage(){
-            item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + "-bw.jpg");
+            if(checkFileExists("images/" + shoe_code.get("shoe_code") + ".jpg")){
+                item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + "-bw.jpg");
             //img.src = "images/" + shoe_code.get("shoe_code") + ".jpg";
+            }else{
+                item.setAttribute("src", "images/default-shoe-bw.jpg");
+            }
         }
         /*
         if(document.getElementById("mouse_change_id")){
