@@ -31,17 +31,58 @@ $gen_id = rand(0, getrandmax());
     <title> My Shoe Store </title>
     <link rel = "stylesheet" href = "custom_table_main.css">
 
-    <script>
-        const resetFunction = evt => { // Event object
-            var resetForm = document.getElementById("mainForm")[0]; 
-            resetForm.reset(); // resets entire form
-            return true;
-        };
+    <script type = "text/javascript">
+                function validate_form(){
+                    var error_messages = ""; // error_messages_container
+                    var shoeCodeValue = document.getElementById("shoe_code").value; // retrieves shoe_code form value
+                    var shoeNameValue = document.getElementById("shoe_name").value; // retrieves shoe_name form value
+                    var shoeNameDescription = document.getElementById("description_text_area").value; // retrieves description_text_area form value
+                    var shoeNamePrice = document.getElementById("shoe_price").value; // retrieves shoe_price form value
+                    var shoePriceValue = parseFloat(shoeNamePrice); 
+                        
+                    if(shoeCodeValue == ""){ // checks if shoeCodeValue is empty
+                        error_messages += "Invalid Input. \nShoe code cannot be empty\n";
+
+                    }else if((shoeCodeValue.length > 1 && shoeCodeValue.length) < 4 || shoeCodeValue.length > 10){  // Checks if shoeCode length is outside a certain range
+                        error_messages += "Invalid Input. \nShoe code must be between 4 and 10 characters\n";
+                    }
+
+                    if(shoeNameValue == ""){
+                        error_messages += "\nShoe name cannot be empty\n";
+                    }else if(shoeNameValue.length < 10 || shoeNameValue.length > 100){ // checks if shoeName input is outside a certain range
+                        error_messages += "\nShoe name must be between 10 to 100 characters\n";
+                    }
+
+                    if(shoeNameDescription == ""){
+                        error_messages += "\nShoe Description cannot be empty\n";
+                    }else if(shoeNameDescription.length < 10 || shoeNameDescription.length > 255){ // checks if shoe_description input is outside a certain range
+                        error_messages += "\nShoe Description must be a minimum of 10 characters & a maximum of 255 characters\n";
+                    }
+
+                    if(shoeNamePrice == ""){
+                        error_messages += "\nShoe Price cannot be empty\n";
+                    }else if(shoePriceValue <= 0){ // checks if shoe_description input is less than or equal to 0
+                        error_messages += "\nShoe Price cannot be less or equal to $0\n";
+                    }else if(shoePriceValue > 100000){ // checks if shoe_description input is greater than 100000
+                        error_messages += "\nShoe Price cannot exceed $100000\n";
+                    }
+
+                    if(error_messages != ""){ // if error_messages is not empty
+                        window.alert(error_messages); // notifies user
+                        return false;
+                    }
+                }
+
+                const resetFunction = evt => { // Event object
+                    var resetForm = document.getElementById("mainForm")[0]; 
+                    resetForm.reset(); // resets entire form
+                    return true;
+                };
                     
-        document.addEventListener("DOMContentLoaded", () => {
-            select("#shoe_reset_button").addEventListener("click", resetFunction); // attaches eventListenr to shoe reset button
-        });  
-    </script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    select("#shoe_reset_button").addEventListener("click", resetFunction); // attaches eventListenr to shoe reset button
+                });     
+            </script>
 </head>
 
 <body>
@@ -136,60 +177,6 @@ $gen_id = rand(0, getrandmax());
                 
                 <input id = "shoe_reset_button" class = "shoe_code_class_label" type = "reset" value = "Reset Form"> <!-- submit_buttom -->
             </form>
-
-
-            <script type = "text/javascript">
-                function validate_form(){
-                    var error_messages = ""; // error_messages_container
-                    var shoeCodeValue = document.getElementById("shoe_code").value; // retrieves shoe_code form value
-                    var shoeNameValue = document.getElementById("shoe_name").value; // retrieves shoe_name form value
-                    var shoeNameDescription = document.getElementById("description_text_area").value; // retrieves description_text_area form value
-                    var shoeNamePrice = document.getElementById("shoe_price").value; // retrieves shoe_price form value
-                    var shoePriceValue = parseFloat(shoeNamePrice); 
-                        
-                    if(shoeCodeValue == ""){ // checks if shoeCodeValue is empty
-                        error_messages += "Invalid Input. \nShoe code cannot be empty\n";
-
-                    }else if((shoeCodeValue.length > 1 && shoeCodeValue.length) < 4 || shoeCodeValue.length > 10){  // Checks if shoeCode length is outside a certain range
-                        error_messages += "Invalid Input. \nShoe code must be between 4 and 10 characters\n";
-                    }
-
-                    if(shoeNameValue == ""){
-                        error_messages += "\nShoe name cannot be empty\n";
-                    }else if(shoeNameValue.length < 10 || shoeNameValue.length > 100){ // checks if shoeName input is outside a certain range
-                        error_messages += "\nShoe name must be between 10 to 100 characters\n";
-                    }
-
-                    if(shoeNameDescription == ""){
-                        error_messages += "\nShoe Description cannot be empty\n";
-                    }else if(shoeNameDescription.length < 10 || shoeNameDescription.length > 255){ // checks if shoe_description input is outside a certain range
-                        error_messages += "\nShoe Description must be a minimum of 10 characters & a maximum of 255 characters\n";
-                    }
-
-                    if(shoeNamePrice == ""){
-                        error_messages += "\nShoe Price cannot be empty\n";
-                    }else if(shoePriceValue <= 0){ // checks if shoe_description input is less than or equal to 0
-                        error_messages += "\nShoe Price cannot be less or equal to $0\n";
-                    }else if(shoePriceValue > 100000){ // checks if shoe_description input is greater than 100000
-                        error_messages += "\nShoe Price cannot exceed $100000\n";
-                    }
-
-                    if(error_messages != ""){ // if error_messages is not empty
-                        window.alert(error_messages); // notifies user
-                        return false;
-                    }
-                }
-
-                const resetFunction = evt => { // Event object
-                    var resetForm = document.getElementById("mainForm")[0]; 
-                    resetForm.reset(); // resets entire form
-                    return true;
-                };
-                    
-                document.addEventListener("DOMContentLoaded", () => {
-                    select("#shoe_reset_button").addEventListener("click", resetFunction); // attaches eventListenr to shoe reset button
-                });     
-            </script>
         </div>
     </div>     
     <div>
