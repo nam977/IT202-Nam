@@ -133,7 +133,7 @@
 
                 <?php foreach ($shoeProducts as $shoeProduct) : ?>
                 <tr>
-                    <td> <a href = "shoe_details.php?shoe_code=<?php echo $shoeProduct['shoeCode'];?>" ?> <?php echo $shoeProduct['shoeCode'];?> </a> </td> 
+                    <td> <a href = "shoe_details_logged_out.php?shoe_code=<?php echo $shoeProduct['shoeCode'];?>" ?> <?php echo $shoeProduct['shoeCode'];?> </a> </td> 
                     <td> <?php echo $shoeProduct['shoeName']; ?> </td>
                     <td> <?php echo $shoeProduct['price']; ?> </td>
                     <td> <?php echo $shoeProduct['description']; ?> </td>
