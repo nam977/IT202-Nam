@@ -1,4 +1,9 @@
 <?php
+/*
+UCID: nam@njit.edu
+Date: 12/1/2023
+*/
+
 session_start();
 
 require('admin_db.php');
@@ -70,6 +75,7 @@ $image = glob("images" . "$shoe_code.jpg");
         <?php include('logged_in_header.php'); ?>
     </div>
     <div id = "main-div"> 
+        <!-- Main shoe table -->
         <section class = "shoe-table-data">
 
             <h1> Shoe Information </h1>
@@ -86,7 +92,7 @@ $image = glob("images" . "$shoe_code.jpg");
                         <!--th> Shoe Price: </th-->
                 </tr>
 
-                <?php foreach ($shoeInfos as $shoeInfo) : ?>
+                <?php foreach ($shoeInfos as $shoeInfo) : ?> <!-- Retrieves all shoe entry info -->
                 <tr>
                     <td> <?php echo $shoeInfo['shoeCode'];?></td>
                     <td> <?php echo $shoeInfo['shoeName']; ?> </td>
@@ -101,10 +107,16 @@ $image = glob("images" . "$shoe_code.jpg");
 
         <div id = "image_placement">
             <?php 
-                $file_location = file_exists("images/$shoe_code-bw.jpg");
-                if($file_location == 1){
-                    echo "<img src = \"images/$shoe_code-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"300px\" width = \"450px\"/>";
+                $file_location = file_exists("images/$shoe_code-bw.jpg"); // verifies if image file exists
+                if($file_location == 1){ // if true
+                    /*
+                     * Creates image html tag containning specific shoe entry image 
+                     */
+                    echo "<img src = \"images/$shoe_code-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"300px\" width = \"450px\"/>"; 
                 }else{
+                    /*
+                    Creates image html tag containing default shoe entry image
+                    */
                     echo "<img src = \"images/default-shoe-bw.jpg\" id = \"mouse_change_id\" alt = \"$shoe_code\" height = \"300px\" width = \"450px\"/>";
                 }
             ?>
@@ -116,15 +128,15 @@ $image = glob("images" . "$shoe_code.jpg");
     </main>
 </body>
 <script type = "text/javascript">
-        const shoe_code = new URLSearchParams(window.location.search);
+        const shoe_code = new URLSearchParams(window.location.search); //retrieves shoe code
 
 
-        var item = document.getElementById("mouse_change_id");
-
-        item.addEventListener("mouseover", showImage, false);
-        item.addEventListener("mouseout", hideImage, false);
+        var item = document.getElementById("mouse_change_id"); // attaches to image element
+            
+        item.addEventListener("mouseover", showImage, false); // attaches mouseover attribute to image. Upon execution, image changes color when mouse is over image
+        item.addEventListener("mouseout", hideImage, false);  // attaches moseout attribute to image. Upon exectuion, image changes back to black & white when mouse is over image
         
-        function checkFileExists(url){
+        function checkFileExists(url){ // checks if file exists
             var xhr = new XMLHttpRequest();
             xhr.open('HEAD', url, false);
             xhr.send();
@@ -133,9 +145,9 @@ $image = glob("images" . "$shoe_code.jpg");
 
         function showImage(){
             if(checkFileExists("images/" + shoe_code.get("shoe_code") + ".jpg")){
-                item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + ".jpg");
+                item.setAttribute("src", "images/" + shoe_code.get("shoe_code") + ".jpg"); // sets to shoe specific image if image locaiton exists
             }else{
-                item.setAttribute("src", "images/default-shoe.jpg");
+                item.setAttribute("src", "images/default-shoe.jpg"); // sets to default shoe image if image location does not exist
             }
         }
 
